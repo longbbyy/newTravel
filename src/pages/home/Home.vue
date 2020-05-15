@@ -1,12 +1,13 @@
 <template>
   <div class="home">
-qqq
+    <home-head></home-head>
   </div>
 </template>
 
 <script>
+import homeHead from './components/homeheade.vue'
 export default {
-
+  components: { homeHead }
 }
 </script>
 
