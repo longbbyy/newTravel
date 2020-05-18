@@ -50,7 +50,7 @@ export default {
   overflow: hidden;
   width: 100%;
   height: 0;
-  padding-bottom: 40%;
+  padding-bottom: 39.4%;
   background-color: #eee;
   img {
     width: 100%;
