@@ -4,6 +4,7 @@
     <home-swiper></home-swiper>
     <home-icons></home-icons>
     <recommend></recommend>
+    <week></week>
   </div>
 </template>
 
@@ -12,8 +13,10 @@ import homeHead from './components/homeheade.vue'
 import homeSwiper from './components/swiper.vue'
 import homeIcons from './components/homeicons.vue'
 import recommend from './components/recomend.vue'
+import week from './components/week.vue'
+
 export default {
-  components: { homeHead, homeSwiper, homeIcons, recommend }
+  components: { homeHead, homeSwiper, homeIcons, recommend, week }
 }
 </script>
 
