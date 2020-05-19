@@ -14,6 +14,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  methods: {}
+}
+</script>
+
 <style lang="scss" scoped>
 @import '~@/assets/style/varirable.scss';
 .header {
