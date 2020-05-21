@@ -8,7 +8,7 @@
       内容
     </div>
     <div class="right">
-      城市
+      {{this.$store.state.city}}
       <span class="iconfont arrow-icon">&#xe64a;</span>
     </div>
   </div>

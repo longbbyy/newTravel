@@ -8,7 +8,7 @@
         <div class="title">当前城市</div>
         <div class="button-list">
           <div class="botton-wrapper">
-            <div class="button">上海</div>
+            <div class="button">{{ this.$store.state.city }}</div>
           </div>
         </div>
       </div>
@@ -17,6 +17,7 @@
         <div class="button-list">
           <div
             :key="item.id"
+            @click="handleCityChange(item.name)"
             class="botton-wrapper"
             v-for="item in hot"
           >
@@ -59,7 +60,11 @@ export default {
       }
     }
   },
-  methods: {},
+  methods: {
+    handleCityChange (city) {
+      this.$store.dispatch('changeCity', city)
+    }
+  },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
   }
