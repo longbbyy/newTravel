@@ -12,3 +12,13 @@
     }
   }
 }
+
+.clearfix {
+  display: inline-block;
+  &::after {
+    display: block;
+    content:"";
+    clear: both;
+    height: 0;
+  }
+}
