@@ -135,6 +135,50 @@ li {
   }
   .foods-wrapper {
     flex: 1;
+    .title {
+      padding-left: 14px;
+      height: 26px;
+      line-height: 26px;
+      border-left: 2px solid #d9dde1;
+      font-size: 12px;
+      color: rgb(147, 153, 159);
+      background-color: #f3f5f7;
+    }
+    .food-item {
+      display: flex;
+      margin: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #eee;
+      &:last-child {
+        border: none;
+        margin-bottom: 0px;
+      }
+      .icon {
+        width: 57px;
+        height: 57px;
+        font-size: 0;
+        margin-right: 10px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .content {
+        flex: 1;
+        .name {
+          margin: 2px 0 8px 0;
+          height: 14px;
+          line-height: 14px;
+          font-size: 14px;
+          color: rgb(7, 17, 27);
+        }
+        .desc {
+          margin-bottom: 8px;
+          line-height: 10px;
+          font-size: 10px;
+        }
+      }
+    }
   }
 }
 </style>
