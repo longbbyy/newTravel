@@ -13,6 +13,11 @@
 </template>
 
 <script>
+const LENGTH = 5
+const CLS_ON = 'on'
+const CLS_HALF = 'half'
+const CLS_OFF = 'off'
+
 export default {
   props: {
     size: {
@@ -28,6 +33,22 @@ export default {
   computed: {
     startType () {
       return 'start-' + this.size
+    },
+    itemClasses () {
+      const result = []
+      const score = Math.floor(this.score * 2) / 2
+      const hasDecimal = score % 1 !== 0
+      const integer = Math.floor(score)
+      for (let i = 0; i < integer; i++) {
+        result.push(CLS_ON)
+      }
+      if (hasDecimal) {
+        result.push(CLS_HALF)
+      }
+      while (result.length < LENGTH) {
+        result.push(CLS_OFF)
+      }
+      return result
     }
   }
 }
@@ -50,13 +71,13 @@ export default {
         margin-right: 0;
       }
       &.on {
-        background-image: url('./start48_on@2x.png');
+        background-image: url('./star48_on@2x.png');
       }
       &.half {
-        background-image: url('./start48_half@2x.png');
+        background-image: url('./star48_half@2x.png');
       }
       &.off {
-        background-image: url('./start48_off@2x.png');
+        background-image: url('./star48_off@2x.png');
       }
     }
   }
@@ -70,13 +91,13 @@ export default {
         margin-right: 0;
       }
       &.on {
-        background-image: url('./start36_on@2x.png');
+        background-image: url('./star36_on@2x.png');
       }
       &.half {
-        background-image: url('./start36_half@2x.png');
+        background-image: url('./star36_half@2x.png');
       }
       &.off {
-        background-image: url('./start36_off@2x.png');
+        background-image: url('./star36_off@2x.png');
       }
     }
   }
@@ -90,13 +111,13 @@ export default {
         margin-right: 0;
       }
       &.on {
-        background-image: url('./start24_on@2x.png');
+        background-image: url('./star24_on@2x.png');
       }
       &.half {
-        background-image: url('./start24_half@2x.png');
+        background-image: url('./star24_half@2x.png');
       }
       &.off {
-        background-image: url('./start24_off@2x.png');
+        background-image: url('./star24_off@2x.png');
       }
     }
   }
