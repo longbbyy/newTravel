@@ -1,6 +1,9 @@
 <template>
   <div class="goods">
-    <div class="menu-wrapper">
+    <div
+      class="menu-wrapper"
+      ref="menuWrapper"
+    >
       <ul>
         <li
           :key="index"
@@ -18,11 +21,15 @@
         </li>
       </ul>
     </div>
-    <div class="foods-wrapper">
+    <div
+      @scroll="calulate"
+      class="foods-wrapper"
+      ref="foodWrapper"
+    >
       <ul>
         <li
           :key="index"
-          class="food-list"
+          class="food-list food-list-hook"
           v-for="(item,index) in goods"
         >
           <h1 class="title">{{ item.name }}</h1>
@@ -42,12 +49,15 @@
                 <h2 class="name">{{ food.name}}</h2>
                 <p class="desc">{{ food.description}}</p>
                 <div class="extra">
-                  <span>月售{{ food.sellCount }}份</span>
+                  <span class="count">月售{{ food.sellCount }}份</span>
                   <span>好评率{{ food.rating}}%</span>
                 </div>
                 <div class="price">
-                  <span>￥{{ food.price }}</span>
-                  <span v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                  <span class="now">￥{{ food.price }}</span>
+                  <span
+                    class="old"
+                    v-show="food.oldPrice"
+                  >￥{{food.oldPrice}}</span>
                 </div>
               </div>
             </li>
@@ -60,6 +70,7 @@
 
 <script>
 import { res } from '../JS/index'
+import BScroll from 'better-scroll'
 export default {
   components: {},
   props: {
@@ -70,11 +81,28 @@ export default {
   data () {
     return {
       goods: res.goods,
-      classMap: ['decrease', 'discount', 'special', 'invoice', 'guarantee']
+      classMap: ['decrease', 'discount', 'special', 'invoice', 'guarantee'],
+      listHeight: []
     }
   },
-  created () {
-    console.log(this.goods)
+  mounted () {
+    this.initScroll()
+    // this.calculateHeight()
+  },
+  methods: {
+    initScroll () {
+      var dom = this.$refs.menuWrapper
+      var dom1 = this.$refs.foodWrapper
+      this.menuScroll = new BScroll(dom, {})
+      this.menuScroll = new BScroll(dom1, {})
+    },
+    calculateHeight () {
+      var top = document.documentElement.scrollHeight
+      console.log(top)
+    },
+    calulate (el) {
+      console.log(el.scrollHeight)
+    }
   }
 }
 </script>
@@ -172,10 +200,34 @@ li {
           font-size: 14px;
           color: rgb(7, 17, 27);
         }
-        .desc {
-          margin-bottom: 8px;
+        .desc,
+        .extra {
           line-height: 10px;
           font-size: 10px;
+          color: rgb(7, 17, 27);
+        }
+        .desc {
+          margin-bottom: 8px;
+          line-height: 12px;
+        }
+        .extra {
+          .count {
+            margin-right: 12px;
+          }
+        }
+        .price {
+          font-weight: 700;
+          line-height: 24px;
+          .now {
+            color: Red;
+            margin-right: 18px;
+            font-size: 14px;
+          }
+          .old {
+            text-decoration: line-through;
+            font-size: 10px;
+            color: #eee;
+          }
         }
       }
     }

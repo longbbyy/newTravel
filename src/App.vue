@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <vheader :seller="seller"></vheader>
+    <vheader :seller="seller"></vheader>
     <div class="tab border-1px">
       <div class="tab-item">
         <router-link to="/">商品</router-link>
@@ -11,17 +11,17 @@
       <div class="tab-item">
         <router-link to="/sell">商家</router-link>
       </div>
-    </div> -->
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-// import vheader from '@/pages/header/header'
+import vheader from '@/pages/header/header'
 import { res } from './pages/JS/index'
 export default {
   components: {
-    // vheader
+    vheader
   },
   data () {
     return {
